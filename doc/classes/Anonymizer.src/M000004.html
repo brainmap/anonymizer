@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>anonymize (Anonymizer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/anonymizer.rb, line 22</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">anonymize</span>
+    <span class="ruby-identifier">keys</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@filepaths</span>)
+    <span class="ruby-identifier">idx</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">ndigits</span> = (<span class="ruby-constant">Math</span>.<span class="ruby-identifier">log10</span>(<span class="ruby-ivar">@filepaths</span>.<span class="ruby-identifier">length</span>)<span class="ruby-operator">+</span><span class="ruby-value">1</span>).<span class="ruby-identifier">floor</span>
+    <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-ivar">@anonymizations</span>[<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">pick!</span>] = <span class="ruby-node">&quot;%0#{ndigits}d&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">idx</span>
+      <span class="ruby-identifier">idx</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
