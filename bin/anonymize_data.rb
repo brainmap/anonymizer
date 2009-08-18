@@ -28,8 +28,24 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-p options
+
 
 raise(IndexError, "No items specified to anonymize. Check your glob pattern or explicitly list your  items using -c.") if options[:collection].empty?
-a = Anonymizer.new(options[:collection])
-a.record_to(options[:destination], options[:options_for_record_to])
+
+puts "Anonymizing:"
+options[:collection].each do |i|
+  puts "\t#{i}"
+end
+puts "To:"
+puts "\t#{options[:destination]}"
+
+begin
+  a = Anonymizer.new(options[:collection])
+  a.record_to(options[:destination], options[:options_for_record_to])
+rescue
+  puts "There was an unknown problem with anonymization.  Sorry."
+  exit 1
+end
+
+puts "+++ Successfully Anonymized. +++\n"
+exit 0

@@ -2,12 +2,14 @@ require 'fileutils'
 require 'yaml'
 
 class Anonymizer
+  
   # an array of strings, the paths to the items to be anonymized
   attr_accessor :filepaths
   # a string, the directory to which all of the anoymizations and the key should be copied
   attr_accessor :destination_dir
   # a hash, the keys are the original filepaths, the values are the corresponding anonymized names
   attr_accessor :anonymizations
+  
   
   # Creates a new instance with an array of filepaths (strings)
   # A new set of anaonymizations will be created automatically at initialization.  If you want to reshuffle the 
@@ -17,6 +19,7 @@ class Anonymizer
     @anonymizations = Hash.new
     anonymize
   end
+  
   
   # Reshuffles the anonymized names
   def anonymize
@@ -28,6 +31,7 @@ class Anonymizer
       idx += 1
     end
   end
+  
   
   # Copies the collection of files/directories to the destination directory using the current anonymized names. Records
   # the anonymizations in a keymap.yml file.
@@ -43,12 +47,14 @@ class Anonymizer
       copy_directory_or_file(orig, File.join(destination_dir, anon))
     end
     keymap_filename = options[:keymap_name].nil? ? "keymap" : options[:keymap_name]
-    puts "This is the keymap_filename: #{keymap_filename}"
     write_yml(destination_dir, keymap_filename + '.yml')
     write_csv(destination_dir, keymap_filename + '.csv') if options[:include_csv]
   end
   
+  
 private
+
+
   # recursively copies directories, simply copies files preserving file extension.
   def copy_directory_or_file(orig, dest)
     raise(IOError, "Original file or directory not found: #{orig}") unless File.exists?(orig)
@@ -60,10 +66,12 @@ private
     end
   end
   
+  
   # creates yaml text based on current anonymization
   def to_yaml
     @anonymizations.to_yaml
   end
+  
   
   # creates csv text based on current anonymization
   def to_csv
@@ -74,12 +82,14 @@ private
     return csv_contents
   end
   
+  
   # writes the current anonymization yaml to a file
   def write_yml(destination_dir,keymap_filename)
     File.open(File.join(destination_dir,keymap_filename), 'w') do |out|
        YAML.dump(@anonymizations, out)
     end
   end
+  
   
   # writes the current anonymization csv to a file
   def write_csv(destination_dir,keymap_filename)
@@ -90,14 +100,19 @@ private
 
 end
 
+
+
 # Augments the ruby array class with a couple convenient random picking methods
 class Array
+  
   # Picks one value from the array at random, array remains unchanged.
   def pick
     at(rand(length))
   end
+  
   # Removes and returns one element of the array at random, the original array is changed by this method.
   def pick!
     delete_at(rand(length))
   end
+  
 end

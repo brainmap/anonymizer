@@ -17,7 +17,6 @@
       <span class="ruby-identifier">copy_directory_or_file</span>(<span class="ruby-identifier">orig</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">destination_dir</span>, <span class="ruby-identifier">anon</span>))
     <span class="ruby-keyword kw">end</span>
     <span class="ruby-identifier">keymap_filename</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:keymap_name</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-value str">&quot;keymap&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:keymap_name</span>]
-    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;This is the keymap_filename: #{keymap_filename}&quot;</span>
     <span class="ruby-identifier">write_yml</span>(<span class="ruby-identifier">destination_dir</span>, <span class="ruby-identifier">keymap_filename</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'.yml'</span>)
     <span class="ruby-identifier">write_csv</span>(<span class="ruby-identifier">destination_dir</span>, <span class="ruby-identifier">keymap_filename</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'.csv'</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:include_csv</span>]
   <span class="ruby-keyword kw">end</span></pre>
