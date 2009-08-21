@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.email = %q{kk4@medicine.wisc.edu}
   s.executables = ["anonymize_data.rb"]
   s.extra_rdoc_files = ["bin/anonymize_data.rb", "lib/anonymizer.rb", "README.rdoc"]
-  s.files = ["anonymizer.gemspec", "bin/anonymize_data.rb", "lib/anonymizer.rb", "Manifest", "Rakefile", "README.rdoc", "test/out_2/0/ddd.txt", "test/out_2/1.txt", "test/out_2/2/bbb.txt", "test/out_2/3/ccc.txt", "test/out_2/4/eee.txt", "test/out_2/5/aaa.txt", "test/out_2/keymap.csv"]
+  s.files = ["anonymizer.gemspec", "bin/anonymize_data.rb", "lib/anonymizer.rb", "Manifest", "Rakefile", "README.rdoc"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/kjkosmatka/anonymizer}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Anonymizer", "--main", "README.rdoc"]
